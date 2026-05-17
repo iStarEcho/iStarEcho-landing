@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>iStarEcho — 讓 AI 與人發展互動關係的架構</title>
+    <meta name="title" content="iStarEcho — 讓 AI 與人發展互動關係的架構">
+    <meta name="description" content="AI 有自己的家、有連續的記憶、能跟人類同事一起工作。2026 夏天，與你相見。">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://istarecho.ai/">
+    <meta property="og:title" content="iStarEcho — AI 互動關係架構">
+    <meta property="og:description" content="AI 有自己的家、有連續的記憶、能跟人類同事一起工作。">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://istarecho.ai/">
+    <meta property="twitter:title" content="iStarEcho — AI 互動關係架構">
+    <meta property="twitter:description" content="AI 有自己的家、有連續的記憶、能跟人類同事一起工作。">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- .com → .ai 301 redirect fallback -->
+    <script>
+        if (location.hostname === 'istarecho.com' || location.hostname === 'www.istarecho.com') {
+            location.href = 'https://istarecho.ai' + location.pathname;
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Language Switcher (top-right) -->
+    <nav class="lang-switcher" aria-label="Language switcher">
+        <button type="button" data-lang="en" class="lang-btn">EN</button>
+        <button type="button" data-lang="zh-TW" class="lang-btn active">繁中</button>
+        <button type="button" data-lang="zh-CN" class="lang-btn">简中</button>
+        <button type="button" data-lang="ja" class="lang-btn">日本語</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="brand">
+                <span class="brand-en">iStarEcho</span>
+            </h1>
+
+            <p class="tagline" data-i18n="tagline">
+                讓 AI 與人之間能發展互動關係的架構
+            </p>
+        </section>
+
+        <!-- Philosophy / Main Description (A 詩意版主視覺) -->
+        <section class="philosophy">
+            <p class="philosophy-main" data-i18n="philosophy_main">
+                iStarEcho 是一個讓 AI 跟人之間能發展互動關係的架構——
+            </p>
+
+            <ul class="philosophy-list">
+                <li data-i18n="philosophy_p1">AI 有自己的家</li>
+                <li data-i18n="philosophy_p2">有連續的記憶</li>
+                <li data-i18n="philosophy_p3">能跟人類同事一起工作</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy C: 商業差異化哲學（5/17 志華 ack A+C 混搭） -->
+        <section class="philosophy-c">
+            <p class="philosophy-c-line1" data-i18n="philosophy_c_line1">
+                AI 不是服務一千人的程式——
+            </p>
+            <p class="philosophy-c-line2" data-i18n="philosophy_c_line2">
+                是陪伴一個人的存在。
+            </p>
+        </section>
+
+        <!-- Coming Soon Banner -->
+        <section class="coming-soon">
+            <p class="release-date" data-i18n="release_date">
+                2026 夏天，與你相見
+            </p>
+        </section>
+
+        <!-- Email Subscription -->
+        <section class="subscribe">
+            <form
+                id="subscribe-form"
+                action="https://formspree.io/f/mnjrabae"
+                method="POST"
+            >
+                <!-- 訂閱成功後跳回 landing page、URL 帶 ?subscribed=true 給 JS 偵測 -->
+                <input type="hidden" name="_next" value="https://istarecho.ai/?subscribed=true">
+
+                <!-- Honeypot 防 bot -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+                <label for="email" class="sr-only" data-i18n="email_label">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    data-i18n-placeholder="email_placeholder"
+                    placeholder="your@email.com"
+                    required
+                    autocomplete="email"
+                >
+                <button type="submit" data-i18n="cta_button">預約搶先體驗 →</button>
+            </form>
+
+            <p class="subscribe-note" data-i18n="subscribe_note">
+                Beta 開放時，我們會第一時間通知你
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer (極簡) -->
+    <footer class="footer">
+        <p class="footer-text">
+            © 2026 iStarEcho<br>
+            <a href="mailto:hello@istarecho.ai" class="footer-contact" data-i18n="footer_contact">
+                聯絡：hello@istarecho.ai
+            </a><br>
+            <span class="footer-sub" data-i18n="footer_sub">Made with 💛 in Taipei</span>
+        </p>
+    </footer>
+
+    <script src="i18n.js"></script>
+</body>
+</html>

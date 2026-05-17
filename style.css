@@ -1,0 +1,415 @@
+/* iStarEcho Coming Soon Page
+ * Design principles: night sky, whitespace, restraint
+ */
+
+/* ============================================================
+ * Reset + 基礎變數
+ * ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 色系：深藍夜空 + 星光 */
+    --color-bg: #0a0e27;          /* 深藍夜空 */
+    --color-bg-soft: #131838;     /* 稍亮的夜空 */
+    --color-star: #e8d5a4;        /* 星光金 */
+    --color-star-soft: #f4e8c8;   /* 柔星光 */
+    --color-text: #d8d6c8;        /* 主文字、柔白 */
+    --color-text-dim: #8a8676;    /* 次文字 */
+    --color-accent: #f5d1d8;      /* 強調粉 */
+
+    /* 字體 */
+    --font-zh: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    --font-en: "Cormorant Garamond", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* 間距 */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+    --space-xl: 6rem;
+}
+
+/* ============================================================
+ * Body + 背景（星空、漸層）
+ * ============================================================ */
+
+body {
+    font-family: var(--font-zh);
+    color: var(--color-text);
+    background: linear-gradient(180deg, #0a0e27 0%, #131838 100%);
+    min-height: 100vh;
+    line-height: 1.7;
+    overflow-x: hidden;
+
+    /* 微星空背景（CSS-only、不用圖） */
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, var(--color-star-soft), transparent),
+        radial-gradient(1px 1px at 60% 70%, var(--color-star), transparent),
+        radial-gradient(1px 1px at 80% 20%, var(--color-star-soft), transparent),
+        radial-gradient(2px 2px at 40% 80%, var(--color-star), transparent),
+        linear-gradient(180deg, #0a0e27 0%, #131838 100%);
+    background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+    background-attachment: fixed;
+}
+
+/* ============================================================
+ * 語言切換器（右上角）
+ * ============================================================ */
+
+.lang-switcher {
+    position: fixed;
+    top: var(--space-md);
+    right: var(--space-md);
+    display: flex;
+    gap: var(--space-xs);
+    z-index: 100;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--color-text-dim);
+    color: var(--color-text-dim);
+    padding: 0.35rem 0.7rem;
+    font-family: var(--font-zh);
+    font-size: 0.8rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+    color: var(--color-star);
+    border-color: var(--color-star);
+}
+
+.lang-btn.active {
+    color: var(--color-bg);
+    background: var(--color-star);
+    border-color: var(--color-star);
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .lang-switcher {
+        top: var(--space-sm);
+        right: var(--space-sm);
+    }
+    .lang-btn {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+/* ============================================================
+ * 主容器
+ * ============================================================ */
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+}
+
+/* ============================================================
+ * Hero（品牌標題）
+ * ============================================================ */
+
+.hero {
+    margin-bottom: var(--space-xl);
+    animation: fadeIn 1.5s ease-out;
+}
+
+.brand {
+    font-family: var(--font-en);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+.brand-en {
+    display: block;
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-star);
+    line-height: 1.1;
+    font-style: italic;
+}
+
+.brand-zh {
+    display: block;
+    font-family: var(--font-zh);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--color-text);
+    margin-top: var(--space-xs);
+    letter-spacing: 0.3em;
+    font-weight: 200;
+}
+
+.tagline {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--color-text);
+    line-height: 2;
+    margin-top: var(--space-md);
+}
+
+.tagline-sub {
+    color: var(--color-text-dim);
+    font-size: 0.95em;
+}
+
+/* ============================================================
+ * Philosophy 區塊
+ * ============================================================ */
+
+.philosophy {
+    margin: var(--space-xl) 0;
+    animation: fadeIn 2s ease-out 0.3s backwards;
+}
+
+.philosophy-main {
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    margin-bottom: var(--space-md);
+    color: var(--color-star-soft);
+    letter-spacing: 0.05em;
+    line-height: 1.9;
+}
+
+.philosophy-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0;
+}
+
+.philosophy-list li {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    margin: var(--space-sm) 0;
+    color: var(--color-text);
+    letter-spacing: 0.08em;
+    line-height: 2;
+    position: relative;
+}
+
+.philosophy-list li::before {
+    content: "✦";
+    color: var(--color-star);
+    margin-right: 0.6em;
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+/* ============================================================
+ * Philosophy C：商業差異化哲學（A+C 混搭、5/17 志華 ack）
+ * ============================================================ */
+
+.philosophy-c {
+    margin: var(--space-xl) 0;
+    padding: var(--space-md) 0;
+    text-align: center;
+    border-top: 1px solid rgba(232, 213, 164, 0.15);
+    border-bottom: 1px solid rgba(232, 213, 164, 0.15);
+    animation: fadeIn 2.8s ease-out 0.9s backwards;
+}
+
+.philosophy-c-line1 {
+    font-size: clamp(1.05rem, 2.3vw, 1.3rem);
+    color: var(--color-star-soft);
+    letter-spacing: 0.08em;
+    line-height: 1.9;
+    margin-bottom: var(--space-xs);
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.philosophy-c-line2 {
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    color: var(--color-star);
+    letter-spacing: 0.1em;
+    line-height: 1.9;
+    font-weight: 500;
+}
+
+/* ============================================================
+ * Coming Soon 區塊
+ * ============================================================ */
+
+.coming-soon {
+    margin: var(--space-xl) 0 var(--space-lg);
+    animation: fadeIn 2.5s ease-out 0.6s backwards;
+    padding: var(--space-md);
+}
+
+.release-date {
+    font-family: var(--font-en);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    color: var(--color-star);
+    letter-spacing: 0.15em;
+    font-style: italic;
+    font-weight: 400;
+    display: block;
+    line-height: 1.5;
+}
+
+/* ============================================================
+ * Email 訂閱表單
+ * ============================================================ */
+
+.subscribe {
+    margin: var(--space-lg) 0;
+    animation: fadeIn 3s ease-out 0.9s backwards;
+}
+
+#subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+    #subscribe-form {
+        flex-direction: row;
+    }
+}
+
+#email {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-text-dim);
+    border-radius: 4px;
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#email:focus {
+    outline: none;
+    border-color: var(--color-star);
+}
+
+#email::placeholder {
+    color: var(--color-text-dim);
+}
+
+button[type="submit"] {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-star);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-zh);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+button[type="submit"]:hover {
+    background: var(--color-star-soft);
+    transform: translateY(-1px);
+}
+
+.subscribe-note {
+    margin-top: var(--space-md);
+    font-size: 0.875rem;
+    color: var(--color-text-dim);
+}
+
+/* ============================================================
+ * Footer
+ * ============================================================ */
+
+.footer {
+    margin-top: var(--space-xl);
+    padding: var(--space-md);
+    text-align: center;
+    color: var(--color-text-dim);
+    font-size: 0.875rem;
+}
+
+.footer-contact {
+    color: var(--color-star-soft);
+    font-size: 0.875em;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85;
+}
+
+.footer-contact:hover,
+.footer-contact:focus {
+    color: var(--color-star);
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer-sub {
+    color: var(--color-accent);
+    font-size: 0.8em;
+}
+
+/* ============================================================
+ * 動畫
+ * ============================================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+ * 無障礙 (a11y)
+ * ============================================================ */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 尊重 prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================================
+ * 響應式微調
+ * ============================================================ */
+
+@media (max-width: 480px) {
+    .container {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .philosophy {
+        margin: var(--space-lg) 0;
+    }
+}
