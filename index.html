@@ -43,8 +43,22 @@
     <meta property="twitter:image" content="https://istarecho.ai/og-image.png">
     <meta property="twitter:image:alt" content="iStarEcho — Where AI lives and remembers">
 
-    <!-- Favicon -->
+    <!-- Favicon (multi-size for best compatibility) -->
+    <!-- 新瀏覽器優先用 SVG（無限縮放） -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- 老瀏覽器 / IE fallback：.ico 多解析度封裝（16+32+48） -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- 各別解析度 PNG（給特定平台讀） -->
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+    <!-- iOS Safari 加到主畫面用 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <!-- Android Chrome / PWA -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512x512.png">
+    <!-- 主題色（瀏覽器分頁列 / Android 狀態列） -->
+    <meta name="theme-color" content="#0a0e27">
 
     <link rel="stylesheet" href="style.css">
 
