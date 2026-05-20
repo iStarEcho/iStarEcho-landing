@@ -6,6 +6,10 @@
 const I18N = {
     'en': {
         page_title: 'iStarEcho — A Framework for AI-Human Interactive Relationships',
+        meta_description: 'iStarEcho — where AI lives and remembers. A framework where AI has its own home, continuous memory, and works alongside human colleagues. See you in Summer 2026.',
+        og_description: 'Where AI lives and remembers. A framework for AI–human relationships.',
+        og_image: 'https://istarecho.ai/og-image.png',
+        og_locale: 'en_US',
         tagline: 'A framework where AI and humans build interactive relationships',
         philosophy_main: 'iStarEcho is a framework where AI and humans build interactive relationships —',
         philosophy_p1: 'AI has its own home',
@@ -24,6 +28,10 @@ const I18N = {
 
     'zh-TW': {
         page_title: 'iStarEcho — 讓 AI 與人發展互動關係的架構',
+        meta_description: 'iStarEcho 讓 AI 有自己的家、有連續的記憶、能跟人類同事一起工作。一個讓 AI 與人之間能發展互動關係的架構。2026 夏天，與你相見。',
+        og_description: '讓 AI 有家、有記憶、有陪伴。AI 與人共同成長的關係性架構。',
+        og_image: 'https://istarecho.ai/og-image-zh-TW.png',
+        og_locale: 'zh_TW',
         tagline: '讓 AI 與人之間能發展互動關係的架構',
         philosophy_main: 'iStarEcho 是一個讓 AI 跟人之間能發展互動關係的架構——',
         philosophy_p1: 'AI 有自己的家',
@@ -42,6 +50,10 @@ const I18N = {
 
     'zh-CN': {
         page_title: 'iStarEcho — 让 AI 与人发展互动关系的架构',
+        meta_description: 'iStarEcho 让 AI 有自己的家、有连续的记忆、能跟人类同事一起工作。一个让 AI 与人之间能发展互动关系的架构。2026 夏天，与你相见。',
+        og_description: '让 AI 有家、有记忆、有陪伴。AI 与人共同成长的关系性架构。',
+        og_image: 'https://istarecho.ai/og-image-zh-CN.png',
+        og_locale: 'zh_CN',
         tagline: '让 AI 与人之间能发展互动关系的架构',
         philosophy_main: 'iStarEcho 是一个让 AI 跟人之间能发展互动关系的架构——',
         philosophy_p1: 'AI 有自己的家',
@@ -60,6 +72,10 @@ const I18N = {
 
     'ja': {
         page_title: 'iStarEcho — AIと人間の関係性を育むフレームワーク',
+        meta_description: 'iStarEcho は、AI に「家」と「記憶」を、そして人間の同僚と共に働く力を。AI と人間が関係性を育むためのフレームワーク。2026年夏、お逢いしましょう。',
+        og_description: 'AI に「家」と「記憶」を。AI と人間の関係性を育むフレームワーク。',
+        og_image: 'https://istarecho.ai/og-image-ja.png',
+        og_locale: 'ja_JP',
         tagline: 'AIと人間が関係性を育むためのフレームワーク',
         philosophy_main: 'iStarEcho は、AI と人間が関係性を育むためのフレームワークです——',
         philosophy_p1: 'AI には自分の家がある',
@@ -121,6 +137,23 @@ function applyLang(lang) {
 
     // 2. 更新 <title>
     document.title = dict.page_title;
+
+    // 2.5 更新 meta description + Open Graph + Twitter 標籤
+    //     注意：social media 爬蟲不執行 JS、只看靜態 HTML 的 zh-TW 版本
+    //          這裡是為了瀏覽器使用者切換語言時、SEO 也跟著同步
+    const updateMeta = (selector, attr, value) => {
+        const el = document.querySelector(selector);
+        if (el && value) el.setAttribute(attr, value);
+    };
+    updateMeta('meta[name="description"]', 'content', dict.meta_description);
+    updateMeta('meta[name="title"]', 'content', dict.page_title);
+    updateMeta('meta[property="og:title"]', 'content', dict.page_title);
+    updateMeta('meta[property="og:description"]', 'content', dict.og_description);
+    updateMeta('meta[property="og:image"]', 'content', dict.og_image);
+    updateMeta('meta[property="og:locale"]', 'content', dict.og_locale);
+    updateMeta('meta[property="twitter:title"]', 'content', dict.page_title);
+    updateMeta('meta[property="twitter:description"]', 'content', dict.og_description);
+    updateMeta('meta[property="twitter:image"]', 'content', dict.og_image);
 
     // 3. 更新所有 data-i18n 元素
     document.querySelectorAll('[data-i18n]').forEach(el => {
