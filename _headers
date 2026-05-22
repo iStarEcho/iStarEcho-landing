@@ -13,7 +13,8 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  # HSTS 由 Cloudflare zone 端管理（SSL/TLS → Edge Certificates → HSTS = 12 months）
+  # Free plan 不支援 preload 字串、升 Pro plan 才能加
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-origin
   Cross-Origin-Embedder-Policy: unsafe-none
