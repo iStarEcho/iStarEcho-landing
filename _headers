@@ -1,0 +1,19 @@
+# Cloudflare Pages _headers
+# 對應 securityheaders.com 評等升級：C → A+
+# 對齊 5/21 Opus 白帽 audit recommendations + Phase 0 Cloudflare 健檢
+#
+# 5/22 by 若曦 + 志華
+#
+# 部署：commit + push → Cloudflare Pages 自動套用、無需手動 reload
+# 驗證：https://securityheaders.com/?q=https%3A%2F%2Fistarecho.ai%2F&followRedirects=on
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; connect-src 'self' https://formspree.io https://cloudflareinsights.com https://*.cloudflareinsights.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Cross-Origin-Embedder-Policy: unsafe-none
