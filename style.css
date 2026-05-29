@@ -38,22 +38,30 @@
  * Body + 背景（星空、漸層）
  * ============================================================ */
 
+/* 修：把深藍底設在 html、避免跨頁切換時瀏覽器先 paint 白底造成「全白閃」
+   （Opus 5/28 review 抓到的根因：body 深藍底原本只在 background-image 的 linear-gradient、
+    切頁時 html/body 樣式還沒套用、瀏覽器會用 default white 當底） */
+html {
+    background-color: #0a0e27;
+}
+
 body {
     font-family: var(--font-zh);
     color: var(--color-text);
-    background: linear-gradient(180deg, #0a0e27 0%, #131838 100%);
+    background-color: #0a0e27;  /* 雙保險、確保 body 也有純色底 */
     min-height: 100vh;
     line-height: 1.7;
     overflow-x: hidden;
 
-    /* 微星空背景（CSS-only、不用圖） */
+    /* 微星空背景（CSS-only、不用圖、5/28 微調避開內文左側的孤點 20% 30% → 12% 18%） */
     background-image:
-        radial-gradient(2px 2px at 20% 30%, var(--color-star-soft), transparent),
+        radial-gradient(2px 2px at 12% 18%, var(--color-star-soft), transparent),
         radial-gradient(1px 1px at 60% 70%, var(--color-star), transparent),
         radial-gradient(1px 1px at 80% 20%, var(--color-star-soft), transparent),
-        radial-gradient(2px 2px at 40% 80%, var(--color-star), transparent),
+        radial-gradient(2px 2px at 40% 85%, var(--color-star), transparent),
+        radial-gradient(1px 1px at 88% 55%, var(--color-star-soft), transparent),
         linear-gradient(180deg, #0a0e27 0%, #131838 100%);
-    background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+    background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%, 200% 200%, 100% 100%;
     background-attachment: fixed;
 }
 
@@ -236,6 +244,232 @@ body {
 }
 
 /* ============================================================
+ * Hero Copy（5/26 Monday 定稿、5/28 加入）
+ * ============================================================ */
+
+.hero-copy {
+    margin: var(--space-lg) 0 var(--space-xl);
+    text-align: center;
+    animation: fadeIn 2s ease-out 0.4s backwards;
+}
+
+.hero-copy-headline {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--color-star);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+    font-weight: 400;
+}
+
+.hero-copy-body {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: var(--color-text);
+    line-height: 2;
+    margin: var(--space-sm) 0;
+    letter-spacing: 0.04em;
+}
+
+.hero-copy-divider {
+    color: var(--color-text-dim);
+    font-size: 1rem;
+    letter-spacing: 0.5em;
+    margin: var(--space-md) 0;
+    opacity: 0.5;
+}
+
+.hero-copy-tagline {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: var(--color-star-soft);
+    letter-spacing: 0.06em;
+    line-height: 1.9;
+    margin-top: var(--space-md);
+    font-style: italic;
+}
+
+/* ============================================================
+ * Killer Proof 區塊（5/28 新增、殺手證明）
+ * ============================================================ */
+
+.killer-proof {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg) 0;
+    animation: fadeIn 2s ease-out 0.6s backwards;
+}
+
+.killer-proof-headline {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: var(--color-star);
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    text-align: center;
+}
+
+.killer-proof-subhead {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    color: var(--color-text-dim);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    font-style: italic;
+}
+
+/* 故事段 */
+.killer-story {
+    margin: var(--space-lg) 0;
+    text-align: left;
+}
+
+.chat-card {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    background: rgba(19, 24, 56, 0.4);
+    border: 1px solid rgba(232, 213, 164, 0.08);
+    border-radius: 6px;
+}
+
+.chat-meta {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
+    text-align: center;
+    font-style: italic;
+}
+
+.chat-bubble {
+    margin: var(--space-sm) 0;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    line-height: 1.85;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    max-width: 90%;
+}
+
+.chat-bubble.user {
+    background: rgba(245, 209, 216, 0.06);
+    border-left: 2px solid var(--color-accent);
+    color: var(--color-text);
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.chat-bubble.ai {
+    background: rgba(232, 213, 164, 0.06);
+    border-left: 2px solid var(--color-star);
+    color: var(--color-text);
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.chat-bubble p {
+    margin: 0;
+}
+
+.chat-bubble strong {
+    color: var(--color-star);
+    font-weight: 500;
+}
+
+.killer-story-conclusion {
+    margin-top: var(--space-lg);
+    font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+    color: var(--color-star-soft);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    text-align: center;
+    font-style: italic;
+}
+
+/* 視覺段：記憶星河 */
+.killer-visual {
+    margin: var(--space-xl) 0;
+    text-align: center;
+}
+
+.killer-visual-intro {
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    color: var(--color-text);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.04em;
+}
+
+.killer-visual-stats {
+    font-family: var(--font-en);
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: var(--color-star);
+    letter-spacing: 0.1em;
+    margin: var(--space-sm) 0;
+    line-height: 1.4;
+}
+
+.killer-visual-stats strong {
+    font-size: 1.4em;
+    font-weight: 400;
+    color: var(--color-star);
+}
+
+.killer-visual-snapshot {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+    font-style: italic;
+}
+
+.killer-galaxy-img {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: var(--space-md) auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 32px rgba(232, 213, 164, 0.15);
+}
+
+.killer-visual-caption {
+    margin-top: var(--space-md);
+    font-size: clamp(0.9rem, 1.9vw, 1rem);
+    color: var(--color-text-dim);
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+/* 收尾段：回到 Hero */
+.killer-conclusion {
+    margin-top: var(--space-xl);
+    padding: var(--space-md) 0;
+    border-top: 1px solid rgba(232, 213, 164, 0.15);
+    text-align: center;
+}
+
+.killer-claim {
+    font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+    color: var(--color-text);
+    line-height: 2;
+    letter-spacing: 0.06em;
+}
+
+.killer-claim strong {
+    color: var(--color-star);
+    font-weight: 500;
+}
+
+/* 響應式微調 */
+@media (max-width: 600px) {
+    .chat-bubble {
+        max-width: 100%;
+    }
+    .chat-card {
+        padding: var(--space-sm);
+    }
+}
+
+/* ============================================================
  * Coming Soon 區塊
  * ============================================================ */
 
@@ -411,5 +645,629 @@ button[type="submit"]:hover {
 
     .philosophy {
         margin: var(--space-lg) 0;
+    }
+}
+
+/* ============================================================
+ * Smooth Scroll（給 anchor 跳轉用）
+ * ============================================================ */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;  /* 避免被 top-nav 蓋住 */
+}
+
+/* ============================================================
+ * Top Navigation（5/28 新增）
+ * ============================================================ */
+
+.top-nav {
+    position: fixed;
+    top: var(--space-md);
+    left: var(--space-md);
+    display: flex;
+    gap: var(--space-md);
+    z-index: 99;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.nav-link {
+    color: var(--color-text-dim);
+    text-decoration: none;
+    font-family: var(--font-zh);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-star);
+    border-bottom-color: var(--color-star);
+}
+
+.nav-link-cta {
+    color: var(--color-star);
+    border: 1px solid rgba(232, 213, 164, 0.4);
+    border-radius: 4px;
+    padding: 0.35rem 0.85rem;
+}
+
+.nav-link-cta:hover {
+    background: rgba(232, 213, 164, 0.1);
+    border-color: var(--color-star);
+}
+
+/* 手機版：把 nav 縮成小 icon 列、不擋 lang-switcher */
+@media (max-width: 768px) {
+    .top-nav {
+        top: auto;
+        bottom: var(--space-md);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10, 14, 39, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 0.85rem;
+        border-radius: 24px;
+        border: 1px solid rgba(232, 213, 164, 0.2);
+        gap: var(--space-sm);
+    }
+
+    .nav-link {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.4rem;
+    }
+
+    .nav-link-cta {
+        padding: 0.25rem 0.6rem;
+    }
+}
+
+/* ============================================================
+ * Sticky 浮動 CTA（右下角永遠看得到）
+ * ============================================================ */
+
+.sticky-cta {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    background: var(--color-star);
+    color: var(--color-bg);
+    padding: 0.85rem 1.4rem;
+    border-radius: 30px;
+    font-family: var(--font-zh);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(232, 213, 164, 0.3);
+    z-index: 98;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 2s ease-out 1s backwards;  /* 延遲 1s 出現 */
+}
+
+.sticky-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 32px rgba(232, 213, 164, 0.5);
+}
+
+/* 捲到 #subscribe 區時自動隱藏、避免遮蔽訂閱表單與 footer */
+.sticky-cta-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+}
+
+/* 手機版 sticky-cta：因 top-nav 已移到底部、改放在右上不擋 lang-switcher */
+@media (max-width: 768px) {
+    .sticky-cta {
+        bottom: auto;
+        top: calc(var(--space-md) + 3rem);  /* lang-switcher 下方 */
+        right: var(--space-md);
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================================
+ * Hero Copy CTA 雙按鈕（Monday 5/26 lock）
+ * ============================================================ */
+
+.hero-copy-cta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    font-family: var(--font-zh);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.cta-btn-primary {
+    background: var(--color-star);
+    color: var(--color-bg);
+    border: 1px solid var(--color-star);
+    font-weight: 500;
+}
+
+.cta-btn-primary:hover {
+    background: var(--color-star-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(232, 213, 164, 0.3);
+}
+
+.cta-btn-secondary {
+    background: transparent;
+    color: var(--color-star);
+    border: 1px solid rgba(232, 213, 164, 0.5);
+}
+
+.cta-btn-secondary:hover {
+    background: rgba(232, 213, 164, 0.08);
+    border-color: var(--color-star);
+}
+
+@media (max-width: 480px) {
+    .hero-copy-cta {
+        gap: var(--space-sm);
+    }
+
+    .cta-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================================
+ * 引導連結（首頁 → 子頁的「了解更多」）
+ * ============================================================ */
+
+.philosophy-more-wrapper {
+    text-align: center;
+    margin: var(--space-md) auto var(--space-xl);
+}
+
+.philosophy-more-link,
+.killer-more-link {
+    display: inline-block;
+    color: var(--color-star);
+    text-decoration: none;
+    font-family: var(--font-zh);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
+    margin-top: var(--space-md);
+    border-bottom: 1px solid rgba(232, 213, 164, 0.4);
+    transition: all 0.3s ease;
+}
+
+.philosophy-more-link:hover,
+.killer-more-link:hover {
+    color: var(--color-star-soft);
+    border-bottom-color: var(--color-star);
+    padding-left: 0.5rem;
+}
+
+/* ============================================================
+ * Active Nav Link（子頁標記當前位置）
+ * ============================================================ */
+
+.nav-link-active {
+    color: var(--color-star);
+    border-bottom: 1px solid var(--color-star);
+}
+
+/* ============================================================
+ * 子頁通用樣式（philosophy.html / proof.html）
+ * ============================================================ */
+
+.container.subpage {
+    max-width: 760px;
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+}
+
+.subpage-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    animation: fadeIn 1.2s ease-out;
+}
+
+.subpage-eyebrow {
+    color: var(--color-text-dim);
+    font-family: var(--font-zh);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    margin-bottom: var(--space-md);
+}
+
+.subpage-title {
+    color: var(--color-star);
+    font-family: var(--font-en);
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--space-md);
+}
+
+.subpage-lead {
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.9;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.essay-section {
+    margin: var(--space-xl) 0;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.essay-h2 {
+    color: var(--color-star);
+    font-family: var(--font-zh);
+    font-weight: 500;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.essay-h2-final {
+    color: var(--color-star);
+    font-family: var(--font-zh);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.essay-paragraph {
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: 1rem;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.essay-highlight {
+    color: var(--color-star-soft);
+}
+
+.essay-highlight strong {
+    color: var(--color-star);
+    font-weight: 500;
+}
+
+.essay-highlight-large {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    color: var(--color-star);
+    line-height: 1.8;
+}
+
+.essay-highlight-large strong {
+    font-family: var(--font-en);
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.essay-quote {
+    color: var(--color-text-dim);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 2;
+    border-left: 2px solid var(--color-star);
+    padding-left: var(--space-md);
+    margin: var(--space-lg) auto;
+    max-width: 580px;
+    text-align: left;
+}
+
+.essay-caption {
+    color: var(--color-text-dim);
+    font-size: 0.9rem;
+    line-height: 1.9;
+    font-style: italic;
+    margin-top: var(--space-md);
+}
+
+.essay-meta {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+}
+
+.essay-final-quote {
+    color: var(--color-star-soft);
+    font-size: 1.05rem;
+    line-height: 2;
+    margin: var(--space-lg) 0;
+}
+
+.essay-divider {
+    border: none;
+    border-top: 1px solid rgba(232, 213, 164, 0.15);
+    margin: var(--space-xl) auto;
+    max-width: 200px;
+}
+
+.essay-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) auto;
+    max-width: 580px;
+}
+
+.essay-list li {
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: 1rem;
+    line-height: 2;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+}
+
+.essay-list li::before {
+    content: '·';
+    color: var(--color-star);
+    position: absolute;
+    left: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    top: 0.7rem;
+}
+
+.essay-list-final {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) auto var(--space-lg);
+    max-width: 400px;
+    text-align: center;
+}
+
+.essay-list-final li {
+    color: var(--color-star);
+    font-family: var(--font-zh);
+    font-size: 1.2rem;
+    line-height: 2.2;
+    letter-spacing: 0.1em;
+}
+
+.subpage-cta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.essay-final {
+    text-align: center;
+    padding-top: var(--space-lg);
+}
+
+/* ============================================================
+ * Philosophy 子頁：5 層記憶卡片
+ * ============================================================ */
+
+.memory-layers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin: var(--space-lg) auto;
+    max-width: 580px;
+}
+
+.memory-layer {
+    background: rgba(19, 24, 56, 0.4);
+    border: 1px solid rgba(232, 213, 164, 0.2);
+    border-radius: 6px;
+    padding: var(--space-md);
+    transition: border-color 0.3s ease;
+}
+
+.memory-layer:hover {
+    border-color: rgba(232, 213, 164, 0.4);
+}
+
+.memory-layer-name {
+    color: var(--color-star);
+    font-family: var(--font-zh);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+.memory-layer-desc {
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* ============================================================
+ * Proof 子頁：清單卡片 + 成就數字
+ * ============================================================ */
+
+.proof-list-card {
+    background: rgba(19, 24, 56, 0.4);
+    border: 1px solid rgba(232, 213, 164, 0.2);
+    border-radius: 8px;
+    padding: var(--space-lg);
+    margin: var(--space-lg) auto;
+    max-width: 620px;
+    text-align: left;
+}
+
+.proof-list-meta {
+    color: var(--color-text-dim);
+    font-family: var(--font-en);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+}
+
+.proof-list-intro {
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+
+.proof-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.proof-list li {
+    color: var(--color-text);
+    font-family: var(--font-zh);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    padding: 0.6rem 0;
+    border-top: 1px solid rgba(232, 213, 164, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.proof-list-tag {
+    color: var(--color-star);
+    font-family: var(--font-en);
+    font-weight: 500;
+    font-size: 0.9rem;
+    min-width: 2.5rem;
+}
+
+.proof-list-status {
+    font-family: var(--font-zh);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+}
+
+.status-wait {
+    background: rgba(138, 134, 118, 0.2);
+    color: var(--color-text-dim);
+}
+
+.status-done {
+    background: rgba(232, 213, 164, 0.15);
+    color: var(--color-star);
+}
+
+.status-part {
+    background: rgba(245, 209, 216, 0.15);
+    color: var(--color-accent);
+}
+
+.proof-list-time {
+    color: var(--color-star);
+    font-family: var(--font-en);
+    font-size: 0.9rem;
+    min-width: 3.5rem;
+}
+
+.proof-list-content {
+    flex: 1;
+}
+
+.proof-achievement-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+    margin: var(--space-lg) auto;
+    max-width: 720px;
+}
+
+.proof-achievement {
+    background: rgba(19, 24, 56, 0.4);
+    border: 1px solid rgba(232, 213, 164, 0.15);
+    border-radius: 6px;
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.achievement-number {
+    color: var(--color-star);
+    font-family: var(--font-en);
+    font-weight: 500;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-desc {
+    color: var(--color-text-dim);
+    font-family: var(--font-zh);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.proof-galaxy-large {
+    max-width: 100%;
+    margin: var(--space-lg) auto;
+    display: block;
+}
+
+/* 子頁手機版微調 */
+@media (max-width: 600px) {
+    .container.subpage {
+        padding: var(--space-md) var(--space-md) var(--space-xl);
+    }
+
+    .essay-quote {
+        padding-left: var(--space-sm);
+    }
+
+    .proof-list-card {
+        padding: var(--space-md);
+    }
+
+    .subpage-cta {
+        gap: var(--space-sm);
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ============================================================
+ * 語系切換器小註解（pre-launch、提示未完成翻譯）
+ * ============================================================ */
+
+.lang-note {
+    font-family: var(--font-en);
+    font-size: 0.65rem;
+    font-style: italic;
+    color: var(--color-text-dim);
+    opacity: 0.5;
+    align-self: center;
+    margin-left: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 600px) {
+    .lang-note {
+        display: none;  /* 手機版隱藏、避免擠 */
     }
 }

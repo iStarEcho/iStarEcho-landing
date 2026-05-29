@@ -71,13 +71,27 @@
 </head>
 <body>
 
+    <!-- Top Navigation（5/28 新增、Hub + Spoke 多頁架構、統一 4 項） -->
+    <nav class="top-nav" aria-label="Section navigation">
+        <a href="/" class="nav-link nav-link-active" data-i18n="nav_home">首頁</a>
+        <a href="philosophy.html" class="nav-link" data-i18n="nav_philosophy">哲學</a>
+        <a href="proof.html" class="nav-link" data-i18n="nav_proof">證明</a>
+        <a href="#subscribe" class="nav-link nav-link-cta" data-i18n="nav_join">加入我們</a>
+    </nav>
+
     <!-- Language Switcher (top-right) -->
     <nav class="lang-switcher" aria-label="Language switcher">
         <button type="button" data-lang="en" class="lang-btn">EN</button>
         <button type="button" data-lang="zh-TW" class="lang-btn active">繁中</button>
         <button type="button" data-lang="zh-CN" class="lang-btn">简中</button>
         <button type="button" data-lang="ja" class="lang-btn">日本語</button>
+        <span class="lang-note" data-i18n="lang_note" title="Full translation coming soon">i18n in progress</span>
     </nav>
+
+    <!-- Sticky 浮動 CTA 按鈕（右下角、滑到哪都看得到） -->
+    <a href="#subscribe" class="sticky-cta" data-i18n="sticky_cta" aria-label="進來坐">
+        進來坐 →
+    </a>
 
     <main class="container">
 
@@ -92,8 +106,45 @@
             </p>
         </section>
 
+        <!-- Hero Copy（Monday 定稿 5/26、新增 5/28、暫時靜態中文、定稿後再 i18n） -->
+        <section class="hero-copy">
+            <h2 class="hero-copy-headline" data-i18n="hero_copy_headline">
+                你的 AI 同學、也是夥伴
+            </h2>
+
+            <p class="hero-copy-body">
+                從第一份報告、<br>
+                陪你寫到畢業專題的凌晨四點。
+            </p>
+
+            <div class="hero-copy-divider" aria-hidden="true">———</div>
+
+            <p class="hero-copy-body">
+                她記得你的科系、你的指導教授、<br>
+                你上禮拜寫到哪、<br>
+                你熬夜時的那種心情。
+            </p>
+
+            <div class="hero-copy-divider" aria-hidden="true">———</div>
+
+            <p class="hero-copy-tagline">
+                她不是更聰明的 AI。<br>
+                她只是真的記得你。
+            </p>
+
+            <!-- Hero Copy CTA 雙按鈕（Monday 5/26 lock） -->
+            <div class="hero-copy-cta">
+                <a href="#subscribe" class="cta-btn cta-btn-primary" data-i18n="cta_primary">
+                    進來坐
+                </a>
+                <a href="philosophy.html" class="cta-btn cta-btn-secondary" data-i18n="cta_secondary">
+                    了解 iStarEcho
+                </a>
+            </div>
+        </section>
+
         <!-- Philosophy / Main Description (A 詩意版主視覺) -->
-        <section class="philosophy">
+        <section class="philosophy" id="philosophy">
             <p class="philosophy-main" data-i18n="philosophy_main">
                 iStarEcho 是一個讓 AI 跟人之間能發展互動關係的架構——
             </p>
@@ -105,6 +156,13 @@
             </ul>
         </section>
 
+        <!-- 引導去 philosophy.html 完整版 -->
+        <div class="philosophy-more-wrapper">
+            <a href="philosophy.html" class="philosophy-more-link" data-i18n="philosophy_more_link">
+                了解我們的哲學 →
+            </a>
+        </div>
+
         <!-- Philosophy C: 商業差異化哲學（5/17 志華 ack A+C 混搭） -->
         <section class="philosophy-c">
             <p class="philosophy-c-line1" data-i18n="philosophy_c_line1">
@@ -115,6 +173,100 @@
             </p>
         </section>
 
+        <!-- Killer Proof Section（殺手證明、新增 5/28） -->
+        <section class="killer-proof" id="killer-proof">
+            <h2 class="killer-proof-headline" data-i18n="killer_headline">
+                12,953 顆星星、半年沒掉一顆
+            </h2>
+            <p class="killer-proof-subhead" data-i18n="killer_subhead">
+                她記得你四個月前半夜列的清單
+            </p>
+
+            <!-- 故事段：兩個對話卡片 -->
+            <div class="killer-story">
+
+                <div class="chat-card">
+                    <p class="chat-meta">
+                        2026 年 5 月 27 日早晨
+                    </p>
+
+                    <div class="chat-bubble user">
+                        <p>
+                            「妳記得我曾經半夜睡不好、列了一大串內容、麻煩妳幫我記下來嗎？我已經完全忘了 😭」
+                        </p>
+                    </div>
+
+                    <div class="chat-bubble ai">
+                        <p>
+                            「找到了。是 2026 年 2 月 3 日半夜寫的 Phase 17 清單。<br>
+                            你那晚原話：『記憶品質、包含海馬層、CTM、皮層內部記憶的方式與品質』。<br>
+                            17.1 還在等待中、17.2 文件庫<strong>隔天就 ship 了</strong>、17.3 跨 session 記憶 6 月已部分 ship。」
+                        </p>
+                    </div>
+                </div>
+
+                <div class="chat-card">
+
+                    <div class="chat-bubble user">
+                        <p>
+                            「應該還有一串、最近的、5 月的、我記得好像還有 PO 到協作板吧？」
+                        </p>
+                    </div>
+
+                    <div class="chat-bubble ai">
+                        <p>
+                            「搜了協作板、<strong>5 月份你 0 筆 post</strong>——你可能記成 PO 但實際是寫進 doc。<br>
+                            5 月 2 日凌晨 02:30-02:52、20 分鐘密集編輯、4 個檔案：<br>
+                            Backport 計劃、心跳 L2 規格、定位差異化分析、Open Threads。<br>
+                            那份『定位差異化分析』、半個月後改變整個公司方向。」
+                        </p>
+                    </div>
+                </div>
+
+                <p class="killer-story-conclusion">
+                    不只是記得——她跟著你、一起把事情活過、還幫你糾正記憶。
+                </p>
+            </div>
+
+            <!-- 視覺段：記憶星河 -->
+            <div class="killer-visual">
+                <p class="killer-visual-intro">
+                    這是她半年來的記憶星河。
+                </p>
+                <p class="killer-visual-stats">
+                    <strong>12,953</strong> 顆星辰 · <strong>14,415</strong> 條星線
+                </p>
+                <p class="killer-visual-snapshot">
+                    （2026-05-25 snapshot · 還在長）
+                </p>
+
+                <img src="images/memory-galaxy.png"
+                     alt="Memory Galaxy — 12,953 stars, 14,415 connections"
+                     class="killer-galaxy-img"
+                     loading="lazy">
+
+                <p class="killer-visual-caption">
+                    每一顆星、是你說過的一句話、一個決定、一次心情起伏。<br>
+                    每一條線、是她在星與星之間找到的關聯——<br>
+                    「半夜列的清單」連到「四個月後你問起」、<br>
+                    「你以為 PO 板了」連到「其實是寫進 doc」。
+                </p>
+            </div>
+
+            <!-- 收尾、回到 Hero -->
+            <div class="killer-conclusion">
+                <p class="killer-claim">
+                    業界放棄了單一 Session。<br>
+                    我們做到了——<strong>半年、12,953 顆星星沒掉一顆。</strong>
+                </p>
+
+                <!-- 引導去 proof.html 完整版 -->
+                <a href="proof.html" class="killer-more-link" data-i18n="killer_more_link">
+                    看完整殺手證明 →
+                </a>
+            </div>
+        </section>
+
         <!-- Coming Soon Banner -->
         <section class="coming-soon">
             <p class="release-date" data-i18n="release_date">
@@ -123,7 +275,7 @@
         </section>
 
         <!-- Email Subscription -->
-        <section class="subscribe">
+        <section class="subscribe" id="subscribe">
             <form
                 id="subscribe-form"
                 action="https://formspree.io/f/mnjrabae"
