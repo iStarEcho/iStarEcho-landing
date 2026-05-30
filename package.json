@@ -1,0 +1,15 @@
+{
+  "name": "istarecho-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "iStarEcho landing page (static site, build pipeline strips comments for production)",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "echo 'No dev server needed; open index.html directly or use Cloudflare Pages dev'"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "clean-css": "^5.3.3",
+    "terser": "^5.31.0"
+  }
+}
