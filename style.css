@@ -1085,23 +1085,52 @@ html {
  * ============================================================ */
 
 .memory-layers {
+    /* 5/30 升級：砍卡片、改成羅馬數字 Ⅰ-Ⅴ + 左側極細貫穿線（古書章節感） */
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-sm);
+    gap: var(--space-lg);  /* 5/30 v2：gap 拉大，層與層之間呼吸更深 */
     margin: var(--space-lg) auto;
-    max-width: 580px;
+    max-width: 620px;
+    padding-left: var(--space-md);
+    border-left: 1px solid rgba(232, 213, 164, 0.18);  /* 貫穿五層的極細金線 */
 }
 
 .memory-layer {
-    background: rgba(19, 24, 56, 0.4);
-    border: 1px solid rgba(232, 213, 164, 0.2);
-    border-radius: 6px;
-    padding: var(--space-md);
-    transition: border-color 0.3s ease;
+    /* 5/30 升級：砍 background / border / border-radius，留白為主 */
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
+    position: relative;
+    transition: opacity 0.3s ease;
 }
 
-.memory-layer:hover {
-    border-color: rgba(232, 213, 164, 0.4);
+/* 5/30 v2：層與層之間加極淺水平短線（精裝書章節裝飾線） */
+.memory-layer:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--space-lg) * -0.5);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: rgba(232, 213, 164, 0.12);
+}
+
+.memory-layer-numeral {
+    /* 5/30 新增：羅馬數字 Ⅰ-Ⅴ、襯線體、置左、極細金色 */
+    /* 5/30 v3：往下調到虛線那一行（desc 與 benefit 之間的分隔線高度） */
+    position: absolute;
+    left: -0.2rem;
+    top: 65%;
+    transform: translateY(-50%);
+    color: rgba(232, 213, 164, 0.55);
+    font-family: var(--font-en);  /* 襯線體、跟標題同族 */
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.memory-layer:hover .memory-layer-numeral {
+    color: var(--color-star);  /* hover 時數字提亮 */
 }
 
 .memory-layer-name {
@@ -1231,35 +1260,53 @@ html {
 }
 
 .proof-achievement-list {
+    /* 5/30 v2：回到卡片版、但強制 2 欄 × 3 排對稱（avoid 3+3 落單） */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
     margin: var(--space-lg) auto;
     max-width: 720px;
 }
 
 .proof-achievement {
+    /* 5/30 v2：保留卡片邊框（證據容器感）、留白溫和、不像 SaaS dashboard */
     background: rgba(19, 24, 56, 0.4);
     border: 1px solid rgba(232, 213, 164, 0.15);
     border-radius: 6px;
     padding: var(--space-md);
     text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.proof-achievement:hover {
+    border-color: rgba(232, 213, 164, 0.3);
 }
 
 .achievement-number {
+    /* 5/30 v2：保留放大的襯線數字、但比極簡版收斂一點（卡片內適度大） */
     color: var(--color-star);
     font-family: var(--font-en);
-    font-weight: 500;
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4.5vw, 2.4rem);
     line-height: 1.2;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
 }
 
 .achievement-desc {
+    /* 5/30 v2：圖說 letter-spacing 微調、跟 brand tone 一致 */
     color: var(--color-text-dim);
     font-family: var(--font-zh);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     line-height: 1.7;
+    letter-spacing: 0.04em;
+}
+
+/* 響應式：手機改成 1 欄 */
+@media (max-width: 600px) {
+    .proof-achievement-list {
+        grid-template-columns: 1fr;
+    }
 }
 
 .proof-galaxy-large {
