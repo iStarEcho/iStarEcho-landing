@@ -288,7 +288,7 @@ body {
 }
 
 /* ============================================================
- * Killer Proof 區塊（5/28 新增、殺手證明）
+ * Killer Proof 區塊（5/28 新增、5/30 改名「記得，所以在」）
  * ============================================================ */
 
 .killer-proof {
@@ -777,9 +777,25 @@ html {
 .hero-copy-cta {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: var(--space-md);
     margin-top: var(--space-lg);
     flex-wrap: wrap;
+}
+
+.cta-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.cta-btn-note {
+    color: rgba(232, 213, 164, 0.55);
+    font-family: var(--font-zh);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    margin: 0;
 }
 
 .cta-btn {
@@ -846,7 +862,7 @@ html {
     font-size: 0.95rem;
     letter-spacing: 0.1em;
     padding: 0.5rem 0;
-    margin-top: var(--space-md);
+    margin: var(--space-md) 1.2rem 0;
     border-bottom: 1px solid rgba(232, 213, 164, 0.4);
     transition: all 0.3s ease;
 }
@@ -942,7 +958,7 @@ html {
     line-height: 2;
     letter-spacing: 0.04em;
     margin-bottom: var(--space-md);
-    text-align: center;
+    text-align: center;      /* 5/30 還原：哲學頁是詩 / 信念書，置中節奏感對 tone */
 }
 
 .essay-highlight {
@@ -1010,7 +1026,8 @@ html {
     list-style: none;
     padding: 0;
     margin: var(--space-md) auto;
-    max-width: 580px;
+    max-width: 720px;  /* 5/30 調寬：避免第①條跳行 */
+    text-align: center;  /* 5/30 改：讓 li 整塊跟其他段落一起置中 */
 }
 
 .essay-list li {
@@ -1018,15 +1035,17 @@ html {
     font-family: var(--font-zh);
     font-size: 1rem;
     line-height: 2;
-    padding: 0.5rem 0 0.5rem 1.5rem;
+    padding: 0.5rem 0 0.5rem 1.2rem;
     position: relative;
+    display: inline-block;  /* 5/30 改：每條 li 寬度貼合內容、整塊跟段落一起置中 */
+    text-align: left;        /* 內部文字保持靠左、避免換行時尾巴亂飄 */
 }
 
 .essay-list li::before {
     content: '·';
     color: var(--color-star);
     position: absolute;
-    left: 0.5rem;
+    left: 0;
     font-size: 1.5rem;
     line-height: 1;
     top: 0.7rem;
@@ -1099,6 +1118,25 @@ html {
     font-family: var(--font-zh);
     font-size: 0.95rem;
     line-height: 1.8;
+}
+
+.memory-layer-benefit {
+    color: rgba(232, 213, 164, 0.75);
+    font-family: var(--font-zh);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px dashed rgba(232, 213, 164, 0.18);
+    font-style: italic;
+}
+
+.memory-layer-benefit::before {
+    content: "對你而言 — ";
+    color: rgba(232, 213, 164, 0.55);
+    font-style: normal;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
 }
 
 /* ============================================================
