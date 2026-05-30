@@ -14,6 +14,8 @@
  *
  * Run:  npm run build   (or: node build.js)
  * Output: ./dist/
+ *
+ * Build pipeline version: 1.0.0
  */
 
 const fs = require('fs');
