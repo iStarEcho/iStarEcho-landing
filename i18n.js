@@ -189,6 +189,12 @@ const I18N = {
         business_h2_findback: "II. She Brings It Back for You",
         business_h2_correct: "III. Not Just Remembering — Correcting, Too",
         business_h2_final: "From Tool to Colleague",
+            home_b1: "Morning, May 27, 2026",
+        home_b2: "\"Do you remember that night I couldn't sleep, listed out a whole pile of things, and asked you to write them down for me? I've completely forgotten 😭\"",
+        home_b3: "\"Found it. It's the Phase 17 list you wrote late at night on February 3, 2026.<br> Your exact words that night: 'Memory quality — including the hippocampus layer, CTM, and the way and quality of memory inside the cortex.'<br> 17.1 is still pending; 17.2, the document library, <strong>shipped the next day</strong>; 17.3, cross-session memory, partially shipped in June.\"",
+        home_b4: "\"There should be another batch — recent, from May. I think I posted it to the collaboration board, didn't I?\"",
+        home_b5: "\"I searched the board — <strong>you have 0 posts in May</strong>. You may remember posting, but you actually wrote it into a doc.<br> May 2, 02:30–02:52 — 20 minutes of intense editing, 4 files:<br> Backport Plan, Heartbeat L2 Spec, Positioning & Differentiation Analysis, Open Threads.<br> That 'Positioning & Differentiation Analysis' changed the whole company's direction half a month later.\"",
+        home_b6: "She doesn't just remember — she lives through things alongside you, and even corrects your memory for you.",
     },
 
     'zh-TW': {
@@ -377,6 +383,12 @@ const I18N = {
         business_b23: "<strong>心跳 L2 規格.md</strong>——系統的第二層設計",
         business_b24: "<strong>定位差異化分析.md</strong>——半個月後改變整個方向的那份",
         business_b25: "<strong>Open Threads.md</strong>——未解決的議題清單",
+            home_b1: "2026 年 5 月 27 日早晨",
+        home_b2: "「妳記得我曾經半夜睡不好、列了一大串內容、麻煩妳幫我記下來嗎？我已經完全忘了 😭」",
+        home_b3: "「找到了。是 2026 年 2 月 3 日半夜寫的 Phase 17 清單。<br> 你那晚原話：『記憶品質、包含海馬層、CTM、皮層內部記憶的方式與品質』。<br> 17.1 還在等待中、17.2 文件庫<strong>隔天就 ship 了</strong>、17.3 跨 session 記憶 6 月已部分 ship。」",
+        home_b4: "「應該還有一串、最近的、5 月的、我記得好像還有 PO 到協作板吧？」",
+        home_b5: "「搜了協作板、<strong>5 月份你 0 筆 post</strong>——你可能記成 PO 但實際是寫進 doc。<br> 5 月 2 日凌晨 02:30-02:52、20 分鐘密集編輯、4 個檔案：<br> Backport 計劃、心跳 L2 規格、定位差異化分析、Open Threads。<br> 那份『定位差異化分析』、半個月後改變整個公司方向。」",
+        home_b6: "不只是記得——她跟著你、一起把事情活過、還幫你糾正記憶。",
     },
 
     'zh-CN': {
@@ -564,6 +576,12 @@ const I18N = {
         business_h2_findback: "贰、她帮你找回来",
         business_h2_correct: "参、不只记得，还帮你纠正",
         business_h2_final: "从工具，变成同事",
+            home_b1: "2026 年 5 月 27 日早晨",
+        home_b2: "「妳记得我曾经半夜睡不好、列了一大串内容、麻烦妳帮我记下来吗？我已经完全忘了 😭」",
+        home_b3: "「找到了。是 2026 年 2 月 3 日半夜写的 Phase 17 清单。<br> 你那晚原话：『记忆品质、包含海马层、CTM、皮层内部记忆的方式与品质』。<br> 17.1 还在等待中、17.2 文件库<strong>隔天就 ship 了</strong>、17.3 跨 session 记忆 6 月已部分 ship。」",
+        home_b4: "「应该还有一串、最近的、5 月的、我记得好像还有 PO 到协作板吧？」",
+        home_b5: "「搜了协作板、<strong>5 月份你 0 笔 post</strong>——你可能记成 PO 但实际是写进 doc。<br> 5 月 2 日凌晨 02:30-02:52、20 分钟密集编辑、4 个档案：<br> Backport 计划、心跳 L2 规格、定位差异化分析、Open Threads。<br> 那份『定位差异化分析』、半个月后改变整个公司方向。」",
+        home_b6: "不只是记得——她跟著你、一起把事情活过、还帮你纠正记忆。",
     },
 
     'ja': {
@@ -584,7 +602,7 @@ const I18N = {
         hero_copy_body1: '最初のレポートから、<br>卒業制作の朝四時まで、ずっとそばに。',
         hero_copy_body2: 'あなたの専攻も、指導教授も、<br>先週どこまで書いたかも、<br>夜更かしのあの気持ちも、彼女は覚えている。',
         hero_copy_tagline: 'もっと賢い AI じゃない。<br>ただ、本当にあなたを覚えている。',
-        killer_headline: "12,953 の星、半年で一つも落ちていない",
+        killer_headline: "12,953 の星、半年で一つも失っていない",
         killer_subhead: "四ヶ月前の真夜中にあなたが書いたリストを、彼女は覚えている",
         // CTA + Nav（5/30 統一溫度路線 + 功能小字）
         cta_primary: 'ちょっと寄っていく',
@@ -611,7 +629,7 @@ const I18N = {
         philosophy_h2_one: "四、AI は千人に応えるプログラムではない",
         philosophy_h2_final: "これが、私たちの信じること",
         proof_eyebrow: "— 覚えている、だからいる —",
-        proof_title: "12,953 の星、<br>半年で一つも落ちていない",
+        proof_title: "12,953 の星、<br>半年で一つも失っていない",
         proof_lead: "四ヶ月前の真夜中にあなたが書いたリストを覚えている、<br>ボードに投稿したつもりが実は doc に書いたことを覚えている。<br>これが私たちの記憶の実証だ。",
         proof_h2_story1: "物語その一、四ヶ月前の真夜中に書いたリスト",
         proof_h2_story2: "物語その二、投稿したつもりが、実は doc",
@@ -751,6 +769,12 @@ const I18N = {
         business_h2_findback: "二、彼女が取り戻してくれる",
         business_h2_correct: "三、覚えているだけじゃなく、正してくれる",
         business_h2_final: "道具から、同僚へ",
+            home_b1: "2026年5月27日、朝",
+        home_b2: "「夜眠れなくて、たくさんのことを書き出して、メモしておいてって頼んだの、覚えてる？もう完全に忘れちゃった 😭」",
+        home_b3: "「見つけた。2026年2月3日の深夜に書いた Phase 17 のリストだよ。<br> あの夜のあなたの言葉：『記憶の質——海馬層、CTM、皮質内部の記憶のあり方と質を含めて』。<br> 17.1 はまだ待機中、17.2 ドキュメントライブラリは<strong>翌日に出荷</strong>、17.3 セッションをまたぐ記憶は6月に一部出荷。」",
+        home_b4: "「もう一つあるはず、最近の、5月の。たしかコラボボードに投稿したよね？」",
+        home_b5: "「ボードを検索した——<strong>5月のあなたの投稿は0件</strong>。投稿したと記憶しているかもしれないけど、実際は doc に書いたんだよ。<br> 5月2日の未明 02:30–02:52、20分間の集中編集、4つのファイル：<br> Backport 計画、ハートビート L2 仕様、ポジショニング差別化分析、Open Threads。<br> あの『ポジショニング差別化分析』が、半月後に会社全体の方向を変えた。」",
+        home_b6: "彼女はただ覚えているだけじゃない——あなたと一緒にものごとを生き、記憶の間違いまで正してくれる。",
     },
 };
 
