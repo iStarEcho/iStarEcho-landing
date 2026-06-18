@@ -150,6 +150,14 @@ body {
     font-style: italic;
 }
 
+/* 橫式 ∞ lockup logo（取代 hero 文字標、2026-06-18 映澈）*/
+.brand-logo {
+    display: block;
+    width: clamp(280px, 46vw, 480px);
+    height: auto;
+    margin: 0 auto;
+}
+
 .brand-zh {
     display: block;
     font-family: var(--font-zh);
