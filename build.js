@@ -20,6 +20,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { minify: minifyHtml } = require('html-minifier-terser');
 const CleanCSS = require('clean-css');
 const { minify: minifyJs } = require('terser');
@@ -96,11 +97,16 @@ function copyAssets() {
 }
 
 async function buildHtml() {
+    // 快取破壞：用內容雜湊給 i18n.js / style.css 加版本參數，
+    // 每次部署、檔案一變版本就變、CDN/瀏覽器快取自動失效（不用手動 bump）。
+    const hash = (f) => crypto.createHash('sha256').update(fs.readFileSync(path.join(SRC, f), 'utf8')).digest('hex').slice(0, 8);
+    const vI18n = hash('i18n.js');
+    const vCss = hash('style.css');
     for (const file of HTML_FILES) {
         const srcPath = path.join(SRC, file);
         if (!fs.existsSync(srcPath)) continue;
         const src = fs.readFileSync(srcPath, 'utf8');
-        const out = await minifyHtml(src, {
+        let out = await minifyHtml(src, {
             // Strip all HTML comments (the actual goal of this build)
             removeComments: true,
             // Keep readable enough — we are not optimizing for byte size, just stripping internals
@@ -114,8 +120,11 @@ async function buildHtml() {
             // Safety: preserve case for tags / attrs (Cloudflare email-decode etc.)
             caseSensitive: true,
         });
+        out = out
+            .replace(/(=["'])i18n\.js(["'])/g, `$1i18n.js?v=${vI18n}$2`)
+            .replace(/(=["'])style\.css(["'])/g, `$1style.css?v=${vCss}$2`);
         fs.writeFileSync(path.join(DIST, file), out, 'utf8');
-        console.log(`  html: ${file}  (${src.length} → ${out.length} bytes)`);
+        console.log(`  html: ${file}  (${src.length} → ${out.length} bytes)  [i18n v=${vI18n} css v=${vCss}]`);
     }
 }
 
