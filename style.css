@@ -150,11 +150,19 @@ body {
     font-style: italic;
 }
 
-/* 橫式 ∞ lockup logo（取代 hero 文字標、2026-06-18 映澈）*/
+/* 橫式 ∞ lockup logo（取代 hero 文字標、2026-06-18 映澈、6/19 加防溢出保險）*/
 .brand-logo {
     display: block;
     width: clamp(280px, 46vw, 480px);
+    max-width: 100%;       /* 防呆：CSS 萬一沒載入，HTML width="1200" 也不會撐爆 container */
     height: auto;
+    margin: 0 auto;
+}
+
+/* picture 包裝也限寬，避免 inline 佔位影響 layout */
+.brand picture {
+    display: block;
+    max-width: 480px;
     margin: 0 auto;
 }
 
