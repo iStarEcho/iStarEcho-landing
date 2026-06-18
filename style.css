@@ -605,6 +605,26 @@ button[type="submit"]:hover {
     text-underline-offset: 3px;
 }
 
+/* 招募 CTA 連結（比聯絡信箱亮、像 CTA、2026-06-19 映澈）*/
+.footer-recruit {
+    display: inline-block;
+    color: var(--color-star);
+    font-size: 0.95em;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    line-height: 2.2;
+    opacity: 0.9;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-recruit:hover,
+.footer-recruit:focus {
+    color: var(--color-star-soft);
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .footer-sub {
     color: var(--color-accent);
     font-size: 0.8em;

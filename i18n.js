@@ -17,8 +17,11 @@ const I18N = {
         philosophy_p3: 'and works alongside human colleagues',
         philosophy_c_line1: 'AI is not a program serving a thousand people —',
         philosophy_c_line2: 'It is a presence accompanying one.',
-        // Hero Copy + Killer Proof（暫用中文 fallback、定稿後翻譯）
-        hero_copy_headline: '你的 AI 同學、也是夥伴',
+        // Hero Copy（4-lang 定稿 2026-06-19）+ Killer Proof（暫用中文 fallback）
+        hero_copy_headline: 'Your AI classmate — and companion.',
+        hero_copy_body1: 'From your first report,<br>by your side until 4 a.m. on your final project.',
+        hero_copy_body2: 'She remembers your major, your advisor,<br>where you left off last week,<br>the mood of your sleepless nights.',
+        hero_copy_tagline: "She's not a smarter AI.<br>She just truly remembers you.",
         killer_headline: '12,953 顆星星、半年沒掉一顆',
         killer_subhead: '她記得你四個月前半夜列的清單',
         // CTA + Nav（5/30 統一溫度路線 + 功能小字）
@@ -63,6 +66,7 @@ const I18N = {
         email_placeholder: 'your@email.com',
         cta_button: 'Get early access →',
         subscribe_note: "We'll notify you the moment beta opens.",
+        footer_recruit: "✦ We're hiring →",
         footer_contact: 'Contact: hello@istarecho.ai',
         footer_sub: 'Made with 💛 in Taipei',
     },
@@ -80,8 +84,11 @@ const I18N = {
         philosophy_p3: '能跟人類同事一起工作',
         philosophy_c_line1: 'AI 不是服務一千人的程式——',
         philosophy_c_line2: '是陪伴一個人的存在。',
-        // Hero Copy + Killer Proof（Monday 定稿 5/26）
+        // Hero Copy（4-lang 定稿 2026-06-19）+ Killer Proof
         hero_copy_headline: '你的 AI 同學、也是夥伴',
+        hero_copy_body1: '從第一份報告、<br>陪你寫到畢業專題的凌晨四點。',
+        hero_copy_body2: '她記得你的科系、你的指導教授、<br>你上禮拜寫到哪、<br>你熬夜時的那種心情。',
+        hero_copy_tagline: '她不是更聰明的 AI。<br>她只是真的記得你。',
         killer_headline: '12,953 顆星星、半年沒掉一顆',
         killer_subhead: '她記得你四個月前半夜列的清單',
         // CTA + Nav（5/28 新增、5/30 統一溫度路線）
@@ -134,6 +141,7 @@ const I18N = {
         email_placeholder: 'your@email.com',
         cta_button: '預約搶先體驗 →',
         subscribe_note: 'Beta 開放時，我們會第一時間通知你',
+        footer_recruit: '✦ 我們在招募 →',
         footer_contact: '聯絡：hello@istarecho.ai',
         footer_sub: 'Made with 💛 in Taipei',
     },
@@ -151,8 +159,11 @@ const I18N = {
         philosophy_p3: '能跟人类同事一起工作',
         philosophy_c_line1: 'AI 不是服务一千人的程序——',
         philosophy_c_line2: '是陪伴一个人的存在。',
-        // Hero Copy + Killer Proof（暫用繁中 fallback、定稿後翻譯）
+        // Hero Copy（4-lang 定稿 2026-06-19）+ Killer Proof
         hero_copy_headline: '你的 AI 同学、也是伙伴',
+        hero_copy_body1: '从第一份报告、<br>陪你写到毕业专题的凌晨四点。',
+        hero_copy_body2: '她记得你的科系、你的指导教授、<br>你上礼拜写到哪、<br>你熬夜时的那种心情。',
+        hero_copy_tagline: '她不是更聪明的 AI。<br>她只是真的记得你。',
         killer_headline: '12,953 颗星星、半年没掉一颗',
         killer_subhead: '她记得你四个月前半夜列的清单',
         // CTA + Nav（5/30 統一溫度路線 + 功能小字）
@@ -197,6 +208,7 @@ const I18N = {
         email_placeholder: 'your@email.com',
         cta_button: '预约抢先体验 →',
         subscribe_note: 'Beta 开放时，我们会第一时间通知你',
+        footer_recruit: '✦ 我们在招募 →',
         footer_contact: '联络：hello@istarecho.ai',
         footer_sub: 'Made with 💛 in Taipei',
     },
@@ -214,8 +226,11 @@ const I18N = {
         philosophy_p3: '人間の同僚と共に働く',
         philosophy_c_line1: 'AI は千人に応えるプログラムではなく——',
         philosophy_c_line2: '一人に寄り添う存在です。',
-        // Hero Copy + Killer Proof（暫用繁中 fallback、定稿後翻譯）
-        hero_copy_headline: '你的 AI 同學、也是夥伴',
+        // Hero Copy（4-lang 定稿 2026-06-19）+ Killer Proof（暫用中文 fallback）
+        hero_copy_headline: 'あなたの AI のクラスメイト、そして相棒。',
+        hero_copy_body1: '最初のレポートから、<br>卒業制作の朝四時まで、ずっとそばに。',
+        hero_copy_body2: 'あなたの専攻も、指導教授も、<br>先週どこまで書いたかも、<br>夜更かしのあの気持ちも、彼女は覚えている。',
+        hero_copy_tagline: 'もっと賢い AI じゃない。<br>ただ、本当にあなたを覚えている。',
         killer_headline: '12,953 顆星星、半年沒掉一顆',
         killer_subhead: '她記得你四個月前半夜列的清單',
         // CTA + Nav（5/30 統一溫度路線 + 功能小字）
@@ -260,6 +275,7 @@ const I18N = {
         email_placeholder: 'your@email.com',
         cta_button: '先行アクセスを申し込む →',
         subscribe_note: 'Beta 公開のその瞬間、お知らせいたします。',
+        footer_recruit: '✦ 仲間募集中 →',
         footer_contact: 'お問い合わせ：hello@istarecho.ai',
         footer_sub: 'Made with 💛 in Taipei',
     },
